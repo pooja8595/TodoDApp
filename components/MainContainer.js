@@ -3,6 +3,7 @@ import styles from '../styles/TodoList.module.css'
 import TodoInfo from './TodoInfo'
 import CustomDropDown from './CustomDropDown'
 import { TodoContext } from '../context/TodoListApp'
+import { FaMoon, FaPlusCircle } from 'react-icons/fa'
 
 const MainContainer = () => {
   const data = [
@@ -11,16 +12,18 @@ const MainContainer = () => {
     { label: 'Not Started', value: 'NotStarted', color: '181, 185, 206' },
   ]
 
-  const { theme, currentAccount, getAllTodoList, todoListCreate, currentAccountBalance, todoList, setTodoList } = useContext(TodoContext);
+  const { theme, setCurrentAccount, currentAccount, setUserName, getAllTodoList, getUserName, todoListCreate, currentAccountBalance, todoList, setTodoList } = useContext(TodoContext);
 
 
   useEffect(() => {
-    getBlockChainTodoList()
+    getBlockChainTodoData()
   }, [currentAccountBalance]);
 
-  const getBlockChainTodoList = async () => {
+  const getBlockChainTodoData = async () => {
     try {
       const list = await getAllTodoList();
+      const userName = await getUserName();
+      setCurrentAccount(value => ({ ...value, name: userName }))
       setTodoList(list);
     } catch (error) {
       alert(error)
@@ -33,7 +36,10 @@ const MainContainer = () => {
       <div className={styles.main}>
         <div className={styles.header}>
           <div className={styles.text} style={{ color: theme == "light" ? 'black' : 'white' }}>
-            {currentAccountBalance + " ETH" || 'N/A'}
+            Welcome {currentAccount.name || "Anonymous"}!
+            <div style={{ color: theme == "light" ? 'black' : 'white', fontSize: 12, opacity: .7 }}>
+              &nbsp;Balance: {(currentAccountBalance + " ETH") || 'N/A'}
+            </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <CustomDropDown
@@ -64,7 +70,10 @@ const MainContainer = () => {
           </div>
           <button
             onClick={() => todoListCreate({ title: 'yash', description: 'hello', tag: 'yeh' })}
-            className={styles.Icon}>Add</button>
+            className={styles.Icon}>
+              <FaPlusCircle size={35} /> 
+              <div style={{width: '80%', fontWeight: 'bold'}}>ADD</div>
+            </button>
         </div>
         {todoList?.map((data) => (
           <TodoInfo  {...data} />

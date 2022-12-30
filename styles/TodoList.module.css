@@ -4,6 +4,10 @@
     height: 100vh;
 }
 
+.textBalance {
+    font-size: smaller;
+}
+
 .Sidebar {
     position: fixed;
     height: 100vh;
@@ -41,9 +45,15 @@
 
 .Icon {
     border-radius: 30px;
-    padding: 20px 55px;
+    /* padding: 20px 55px; */
     text-decoration: none;
     border: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 130px;
     background: #7c5efa;
     color: #fff
 }

@@ -12,7 +12,10 @@ export const fetchContract = (signerOrProvider) => new ethers.Contract(todoListC
 const TodoListAppProvider = ({children}) => {
     
     const [todoList, setTodoList] = useState([]);
-    const [currentAccount, setCurrentAccount] = useState("");
+    const [currentAccount, setCurrentAccount] = useState({
+        name: null,
+        address: "",
+    });
     const [currentAccountBalance, setCurrentAccountBalance] = useState("");
     
     
@@ -29,9 +32,10 @@ const TodoListAppProvider = ({children}) => {
         const account = await window.ethereum.request({method: "eth_requestAccounts"});
         
         if(account.length){
-            setCurrentAccount(account[0]);
             const balance = await window.ethereum.request({ method: 'eth_getBalance', params: [ account[0], 'latest' ]});
             setCurrentAccountBalance(ethers.utils.formatEther(balance));
+            
+            setCurrentAccount({...currentAccount, address: account[0]});
             return true;
         }else {
             alert("You dont have any account!");
@@ -48,7 +52,7 @@ const TodoListAppProvider = ({children}) => {
         const provider = new ethers.providers.Web3Provider(connection);
         const signer  = provider.getSigner();
         const contract = await fetchContract(signer);
-        console.warn(contract)
+        console.warn(contract);
         return contract;
        }catch (err){
             console.error(err);
@@ -56,7 +60,6 @@ const TodoListAppProvider = ({children}) => {
        }
     } 
     
-
     const todoListCreate = async ({title, description, tag}) => {
        try {
             const todoContract = await getContract();
@@ -77,6 +80,24 @@ const TodoListAppProvider = ({children}) => {
             alert(error)
             // return [];
             return null
+        }
+    }
+    const getUserName = async () => {
+        try {
+            const todoContract = await getContract();
+            const userName = await todoContract.getUserName();
+            return userName;
+        } catch (error) {
+            alert(error)
+            return "N/A"
+        }
+    }
+    const setUserName = async () => {
+        try {
+            const todoContract = await getContract();
+            const userName = await todoContract.setUserDetails("hello");
+        } catch (error) {
+            alert(error)
         }
     }
 
@@ -115,7 +136,10 @@ const TodoListAppProvider = ({children}) => {
         toggleSidebar, 
         setToggleSideBar,
         todoList, 
-        setTodoList
+        setTodoList,
+        getUserName,
+        isWalletConnected,
+        setUserName
     }}>
         {children}
     </TodoContext.Provider>

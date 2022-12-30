@@ -6,34 +6,20 @@ import { TodoContext } from '../context/TodoListApp'
 import styles from '../styles/TodoList.module.css'
 
 const TodoListHome = () => {
-    const { theme, setCurrentAccountBalance, setCurrentAccount } = useContext(TodoContext);
+    const { theme, setCurrentAccountBalance, setCurrentAccount, isWalletConnected } = useContext(TodoContext);
 
     const [walletDetected, setWalletDetected] = useState(false)
 
 
     useEffect(() => {
-
-        // Contecting with metamask //
-        const isWalletConnected = async () => {
-            if (!window.ethereum) {
-                alert("please install meta-mask!")
-                return false;
-            }
-
-            const account = await window.ethereum.request({ method: "eth_requestAccounts" });
-
-            if (account.length) {
-                setCurrentAccount(account[0]);
-                const balance = await window.ethereum.request({ method: 'eth_getBalance', params: [account[0], 'latest'] });
-                setCurrentAccountBalance(ethers.utils.formatEther(balance));
-                setWalletDetected(true);
-            } else {
-                alert("You dont have any account!");
-            }
-        }
-        isWalletConnected();
+        connFun();
     }, [])
 
+    const connFun = async () => {
+        // Contecting with metamask //
+        const connection = await isWalletConnected();
+        setWalletDetected(connection)
+    }
 
     return (
         <div className={styles.container} >
