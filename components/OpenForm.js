@@ -4,7 +4,8 @@ import styles from '../styles/TodoList.module.css'
 import { FaTimes } from 'react-icons/fa';
 const OpenForm = ({onClose}) => {
     return (
-        <>
+        <div className={styles.content}>
+            {/* <div className={styles.contentfrom}> */}
             <form className={styles.form}>
                 <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
                 <label className={styles.headingfrom}> ADD </label>
@@ -20,7 +21,8 @@ const OpenForm = ({onClose}) => {
                     </div>
                 </div>
             </form>
-        </>
+            {/* </div> */}
+        </div>
     )
 }
 
