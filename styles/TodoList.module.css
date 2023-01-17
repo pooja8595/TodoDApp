@@ -14,7 +14,6 @@
     background-color: #373b53;
     padding: 10px;
     display: flex;
-    /* align-items: flex-end; */
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     flex-direction: column;
@@ -26,7 +25,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-
 }
 
 .main {
@@ -46,7 +44,6 @@
 
 .Icon {
     border-radius: 30px;
-    /* padding: 20px 55px; */
     text-decoration: none;
     border: 0;
     height: 50px;
@@ -73,17 +70,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .tododata {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     color: #fff;
     padding: 15px;
-
 }
 
 .todolist_container {
@@ -91,7 +85,6 @@
     flex-direction: column;
     border-radius: 7px;
     margin: 15px;
-    /* overflow: hidden; */
     background-color: #1e213b;
     box-shadow: -2px 4px 20px 0px rgba(0, 0, 0, 0.261);
 }
@@ -142,7 +135,6 @@
     border-radius: 10;
     padding: 20;
     font-weight: 500;
-
 }
 
 .dark {
@@ -154,25 +146,29 @@
     background-color: #fff;
     color: #333;
 }
-.btn{
+
+.btn {
     display: flex;
     justify-content: flex-end;
 }
-.edit{
+
+.edit {
     padding: 15px 25px;
     margin-bottom: 20px;
     border-radius: 15px;
     color: #373b53;
     background-color: #fff;
 }
-.edit:hover{
+
+.edit:hover {
     background-color: rgb(225, 223, 223);
 }
-.edit:active{
-    background-color: rgb(184, 184, 184);
 
+.edit:active {
+    background-color: rgb(184, 184, 184);
 }
-.delete{
+
+.delete {
     padding: 15px 25px;
     margin-bottom: 20px;
     border-radius: 15px;
@@ -180,48 +176,53 @@
     background-color: red;
     margin-left: 10px;
 }
-.delete:hover{
+
+.delete:hover {
     background-color: rgb(219, 8, 8);
 }
-.delete:active{
- background-color: rgb(158, 4, 4);
 
+.delete:active {
+    background-color: rgb(158, 4, 4);
 }
-.mode{
+
+.mode {
     width: 60px;
 }
-.Label{
+
+.Label {
     font-size: 20px;
 }
-.form{
+
+.form {
     position: absolute;
     width: 50%;
     height: 100vh;
     background-color: #fff;
-    top:0;
-    right:0px;
+    top: 0;
+    right: 0px;
     left: 40px;
     padding: 30px;
     display: flex;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 10px 10px #cdc5ec;
-    /* justify-content: center; */
-    /* align-items: center; */
+    box-shadow: 20px 20px 50px grey;
     flex-direction: column;
-    overflow-y: scroll; /* Show horizontal scrollbar */
-    overflow-x: hidden; /* Show horizontal scrollbar */
+    overflow-y: scroll;
+    overflow-x: hidden;
     bottom: 0;
+
 }
-.btn{
+
+.btn {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     margin-top: 10px;
     width: 100%;
 }
-.sub{
+
+.sub {
     width: 100px;
     height: 50px;
     margin-left: 30px;
@@ -231,24 +232,25 @@
     color: #fff;
     border-color: #fff;
 }
-.dis{
+
+.dis {
     width: 100px;
     height: 50px;
-    /* margin-left: 30px; */
     align-items: center;
     background-color: #7c5efa;
     border-radius: 5px;
     color: #fff;
     border-color: #fff;
 }
-.textinput{
+
+.textinput {
     padding-left: 20px;
     margin-top: 20px;
     margin-left: 20px;
 }
 
-.headingfrom{
-    display:flex;
+.headingfrom {
+    display: flex;
     padding-left: 50px;
     font-size: 30px;
     margin-top: 20px;
